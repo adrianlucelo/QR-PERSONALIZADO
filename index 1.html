@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Igreja</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('dsvsvsv.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh; /* Ocupa a altura total da tela */
+            position: relative; /* Adicionado para tornar a posição dos botões relativa ao body */
+        }
+
+        /* Ícone de menu para telas menores */
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #011538; /* Cor alterada para um azul mais escuro */
+            position: absolute;
+            left: 10px; /* Posiciona o ícone à esquerda */
+            top: 10px; /* Posiciona o ícone no topo */
+            transition: color 0.3s; /* Adiciona transição de cor */
+        }
+
+        /* Adiciona efeito de cor ao passar o mouse */
+        .menu-icon:hover {
+            color: #fff; /* Muda a cor para branco ao passar o mouse */
+        }
+
+        /* Menu de navegação */
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* Alinhar à esquerda */
+            position: absolute;
+            top: 20px; /* Posição vertical inicial dos botões a partir do topo */
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            display: block; /* Garante que os botões são exibidos como blocos */
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Logo da PIB para telas maiores */
+        .logo-da-PIB {
+            width: 50%; /* Largura inicial da imagem logo */
+            margin-top: 150px; /* Espaço entre os botões e a imagem logo */
+            transition: margin-top 0.3s, width 0.3s;
+        }
+
+        /* Texto abaixo da imagem logoPIB para telas maiores */
+        .texto-baixo-logoPIB {
+            text-align: center;
+            margin-top: -50px; /* Espaçamento superior inicial do texto */
+            padding: 20px;
+            position: relative; /* Adicionado para posicionar a seta em relação a este bloco */
+            /* Adicionando a classe .ajuste-vertical-desktop apenas para telas maiores */
+            margin-bottom: 0; /* Espaçamento inferior inicial do texto em desktop */
+        }
+
+        .titulo-texto {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo-texto {
+            font-size: 18px;
+        }
+
+        /* Emoji de seta para baixo */
+        .seta-baixo {
+            font-size: 36px; /* Tamanho do emoji */
+            margin-top: 20px; /* Ajusta a posição vertical da seta */
+            animation: bounce 1s infinite; /* Adiciona uma animação de "pulo" */
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0); /* Mantém a seta na posição inicial */
+            }
+            40% {
+                transform: translateY(-20px); /* Move a seta para cima */
+            }
+            60% {
+                transform: translateY(-10px); /* Move a seta para baixo */
+            }
+        }
+
+        /* Segunda Imagem para telas maiores */
+        .segunda-imagem {
+            width: 65%; /* Estica a imagem para ocupar 65% da largura disponível */
+            margin-top: 20px; /* Espaço entre a seta e a segunda imagem */
+            transition: margin-top 0.3s, width 0.3s;
+        }
+
+        /* Adicionando a classe .ajuste-vertical-desktop apenas para telas maiores */
+        .ajuste-vertical-desktop {
+            margin-top: -260px; /* Espaçamento superior inicial do texto em desktop */
+        }
+
+        /* Estilos específicos para telas menores usando media queries */
+        @media screen and (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a {
+                margin: 5px;
+                display: block; /* Exibe os botões em telas menores */
+            }
+
+            nav.active a {
+                display: block; /* Exibe os botões quando o menu está ativo */
+            }
+
+            /* Logo da PIB para telas menores */
+            .logo-da-PIB {
+                width: 90%; /* Altera a largura da imagem para 90% da largura disponível em telas menores */
+                margin-top: 95px; /* Altera o espaço entre os botões e a imagem logo em telas menores */
+            }
+
+            /* Ajuste de espaçamento inferior para o texto abaixo da imagem logoPIB */
+            .texto-baixo-logoPIB {
+                margin-top: 20px; /* Ajustado o espaçamento superior para afastar o texto da logo */
+                margin-bottom: 40px !important; /* Ajustado o espaçamento inferior para melhor ajuste */
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Ícone de menu para telas menores -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- Menu de navegação -->
+    <nav class="nav">
+        <a href="#ministerios">Ministérios</a>
+        <a href="#horarios">Horários dos Cultos</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#celulas">Células</a>
+    </nav>
+
+    <!-- Logo da PIB -->
+    <img class="logo-da-PIB" src="Design sem nome (57).png" alt="Logo da Primeira Igreja Batista">
+
+    <!-- Texto abaixo da imagem logoPIB -->
+    <div class="texto-baixo-logoPIB"> <!-- Removendo as classes de ajuste vertical para simplificar -->
+        <div class="titulo-texto">Vivendo em Amor e Cuidado❤️</div>
+        <div class="subtitulo-texto">
+            Onde quer que você se encontre na vida, queremos ser um lugar em que você possa contar, um incentivo e apoio.<br>
+            Sempre terá um lugar para você aqui.
+        </div>
+        <!-- Emoji de seta para baixo -->
+        <div class="seta-baixo">↓</div>
+    </div>
+
+    <!-- Segunda Imagem -->
+    <img class="segunda-imagem" src="ELE ESTÀ PROXIMO VAMOS! (1).png" alt="Segunda Imagem">
+
+    <!-- Conteúdo da Página -->
+
+    <script>
+        // Função para alternar a visibilidade do menu em telas menores
+        function toggleMenu() {
+            var nav = document.querySelector('.nav');
+            nav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
